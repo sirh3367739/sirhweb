@@ -1,0 +1,583 @@
+/* ==========================================================================
+   SIRH - Modal de Autenticación (Login & Registro Integrado)
+   Estructurado, accesible, responsivo y de alto impacto visual
+   ========================================================================== */
+
+/* Fondo desenfocado del Modal (Backdrop) */
+.auth-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(7, 20, 38, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.auth-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Tarjeta / Contenedor del Modal */
+.auth-modal-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(7, 20, 38, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow-y: auto;
+    padding: 36px 32px 32px;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #172033;
+}
+
+.auth-modal-overlay.active .auth-modal-card {
+    transform: translateY(0) scale(1);
+}
+
+/* Scrollbar estilizado para el modal */
+.auth-modal-card::-webkit-scrollbar {
+    width: 6px;
+}
+.auth-modal-card::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+
+/* Botón de Cierre (X) */
+.modal-close-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.modal-close-btn:hover {
+    background: #e2e8f0;
+    color: #071426;
+    transform: rotate(90deg);
+}
+
+/* Encabezado del Modal */
+.modal-header {
+    text-align: center;
+    margin-bottom: 22px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.modal-brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.modal-brand-logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: #071426;
+    letter-spacing: 2px;
+}
+
+.modal-pill {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1688d8;
+    background: #eaf5ff;
+    padding: 2px 8px;
+    border-radius: 9999px;
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #071426;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+}
+
+.modal-subtitle {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+/* Selector de Rol (Candidato vs Empresa) */
+.modal-role-selector {
+    background: #f1f5f9;
+    padding: 6px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.modal-role-btn {
+    border: 1px solid transparent;
+    background: transparent;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-role-btn:hover {
+    color: #071426;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.modal-role-btn.active {
+    background: #ffffff;
+    color: #12365c;
+    border-color: #cbd5e1;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    font-weight: 700;
+}
+
+.modal-role-btn.active svg {
+    stroke: #1688d8;
+}
+
+/* Pestañas (Tabs) */
+.modal-tabs {
+    display: flex;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 20px;
+}
+
+.modal-tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-tab-btn:hover {
+    color: #12365c;
+}
+
+.modal-tab-btn.active {
+    color: #071426;
+    border-bottom-color: #1688d8;
+    font-weight: 700;
+}
+
+.modal-tab-btn.active svg {
+    stroke: #1688d8;
+}
+
+/* Alerta Informativa / Feedback */
+.modal-alert {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: alertFadeIn 0.25s ease;
+}
+
+@keyframes alertFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-alert.hidden {
+    display: none;
+}
+
+.modal-alert.info {
+    background: #eaf5ff;
+    color: #12365c;
+    border: 1px solid rgba(22, 136, 216, 0.3);
+}
+
+.modal-alert.success {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.modal-alert.error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* Contenido de Pestañas */
+.modal-tab-content {
+    display: none;
+}
+
+.modal-tab-content.active {
+    display: block;
+    animation: tabFadeIn 0.25s ease;
+}
+
+@keyframes tabFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botones Sociales */
+.modal-social-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.modal-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-social-btn:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+    transform: translateY(-1px);
+}
+
+/* Divisor */
+.modal-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 16px 0;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal-divider::before,
+.modal-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-divider span {
+    padding: 0 10px;
+}
+
+/* Grupos de Inputs */
+.modal-input-group {
+    margin-bottom: 14px;
+}
+
+.modal-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.modal-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 5px;
+}
+
+.modal-required {
+    color: #ef4444;
+}
+
+.modal-forgot-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1688d8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.modal-forgot-link:hover {
+    color: #12365c;
+    text-decoration: underline;
+}
+
+.modal-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.modal-input-icon {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.modal-input {
+    width: 100%;
+    height: 42px;
+    padding: 8px 12px 8px 38px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #1e293b;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-input:focus {
+    border-color: #1688d8;
+    box-shadow: 0 0 0 3px rgba(22, 136, 216, 0.2);
+}
+
+.modal-input.is-invalid {
+    border-color: #ef4444;
+    background-color: #fffbfa;
+}
+
+.modal-field-error {
+    display: block;
+    font-size: 11px;
+    color: #ef4444;
+    margin-top: 3px;
+    min-height: 15px;
+}
+
+/* Select */
+.modal-select {
+    padding-left: 12px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+/* Botón Mostrar/Ocultar contraseña */
+.modal-btn-toggle-pass {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 4px;
+    transition: color 0.2s ease;
+}
+
+.modal-btn-toggle-pass:hover {
+    color: #334155;
+}
+
+.modal-btn-toggle-pass .hidden {
+    display: none;
+}
+
+/* Fila de 2 columnas */
+.modal-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* Checkbox personalizado */
+.modal-checkbox-group {
+    margin-bottom: 18px;
+}
+
+.modal-custom-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 13px;
+    color: #475569;
+}
+
+.modal-custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-checkbox-box {
+    width: 17px;
+    height: 17px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    flex-shrink: 0;
+    background: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.modal-custom-checkbox input:checked + .modal-checkbox-box {
+    background-color: #1688d8;
+    border-color: #1688d8;
+}
+
+.modal-custom-checkbox input:checked + .modal-checkbox-box::after {
+    content: '';
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin-top: -2px;
+}
+
+.modal-terms-link {
+    color: #1688d8;
+    text-decoration: underline;
+}
+
+/* Botón Principal Submit */
+.modal-btn-submit {
+    width: 100%;
+    height: 44px;
+    background: linear-gradient(135deg, #071426 0%, #12365c 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(7, 20, 38, 0.2);
+    transition: all 0.25s ease;
+}
+
+.modal-btn-submit:hover {
+    background: linear-gradient(135deg, #0b1f38 0%, #1688d8 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(18, 54, 92, 0.3);
+}
+
+.modal-btn-submit:active {
+    transform: translateY(0);
+}
+
+/* Footer para cambiar entre Iniciar sesión y Registrarse */
+.modal-footer-switch {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.modal-btn-switch {
+    background: none;
+    border: none;
+    color: #1688d8;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.modal-btn-switch:hover {
+    color: #071426;
+}
+
+/* Responsividad en pantallas pequeñas */
+@media (max-width: 480px) {
+    .auth-modal-card {
+        padding: 28px 18px 24px;
+        border-radius: 16px;
+    }
+
+    .modal-social-group {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-row-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .modal-role-btn {
+        font-size: 12px;
+        padding: 8px 6px;
+    }
+}
