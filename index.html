@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="SIRH - Plataforma inteligente para la gestión del reclutamiento y selección de talento humano"
+    >
+
+    <title>S-I-R-H| Reclutamiento Inteligente</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Estilos organizados en css/ -->
+    <link rel="stylesheet" href="css/sirh.css">
+    <link rel="stylesheet" href="css/modal.css">
+
+</head>
+
+
+<body>
+
+    
+    <header class="header">
+
+        <nav class="navbar">
+
+           
+
+            <a href="#inicio" class="logo">
+                S-I-R-H
+            </a>
+
+
+       
+
+            <ul class="menu">
+
+                <li>
+                    <a href="#inicio">
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#empresas">
+                        Empresas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#vacantes">
+                        Vacantes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#postulantes">
+                        Postulantes
+                    </a>
+                </li>
+
+            </ul>
+
+
+     
+
+            <!-- Acciones de Invitado (No autenticado) -->
+            <div class="acciones" id="nav-guest-actions">
+
+                <a href="#login" class="btn-login" data-auth-modal="login">
+                    Iniciar sesión
+                </a>
+
+                <a href="#registro" class="btn-registro" data-auth-modal="register">
+                    Registrarse
+                </a>
+
+            </div>
+
+            <!-- Acciones de Usuario Autenticado (Se activa dinámicamente) -->
+            <div class="user-session-container hidden" id="nav-user-session">
+                <button type="button" class="user-profile-badge" id="btn-user-dropdown" aria-haspopup="true" aria-expanded="false" title="Menú de usuario">
+                    <div class="user-avatar-circle" id="nav-user-avatar">CM</div>
+                    <div class="user-name-col">
+                        <span class="user-display-name" id="nav-user-name">Carlos Mendoza</span>
+                        <span class="user-display-role" id="nav-user-role">Candidato</span>
+                    </div>
+                    <svg class="icon-dropdown-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Menú Desplegable -->
+                <div class="user-dropdown-menu hidden" id="user-dropdown-menu">
+                    <div class="dropdown-user-header">
+                        <div class="dropdown-avatar-sm" id="dropdown-avatar-sm">CM</div>
+                        <div class="dropdown-header-text">
+                            <strong id="dropdown-header-name">Carlos Mendoza</strong>
+                            <small id="dropdown-header-email">candidato@sirh.com</small>
+                            <span class="dropdown-tag-role" id="dropdown-header-role">Candidato / Postulante</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <ul class="dropdown-items-list">
+                        <li>
+                            <button type="button" class="dropdown-item-btn" id="btn-open-profile">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Ver Mi Perfil Completo</span>
+                            </button>
+                        </li>
+                        <li id="dropdown-role-quickaction">
+                            <!-- Inyectado dinámicamente según rol -->
+                        </li>
+                    </ul>
+                    <div class="dropdown-divider"></div>
+                    <button type="button" class="dropdown-item-btn dropdown-btn-logout" id="btn-dropdown-logout">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </div>
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <main>
+
+
+        
+        <section id="inicio" class="hero">
+
+            <div class="hero-contenedor">
+
+
+                
+                <div class="hero-texto">
+
+                    <p class="etiqueta">
+                        RECLUTAMIENTO INTELIGENTE
+                    </p>
+
+
+                    <h1>
+                        Conectamos talento
+                        con oportunidades
+                    </h1>
+
+
+                    <p class="descripcion">
+
+                        SIRH integra tecnología e Inteligencia
+                        Artificial para apoyar los procesos de
+                        reclutamiento y selección de talento humano.
+
+                    </p>
+
+
+                    <div class="hero-botones">
+
+                        <a
+                            href="#servicios"
+                            class="btn-principal"
+                        >
+                            Conocer S-I-R-H
+                        </a>
+
+
+                        <a
+                            href="#empresas"
+                            class="btn-secundario"
+                        >
+                            Soy empresa
+                        </a>
+
+                    </div>
+
+                </div>
+
+                
+                <div class="hero-imagen">
+
+                    <img
+                        src="img/logo.png"
+                        alt="Inteligencia Artificial aplicada al proceso de selección de talento"
+                    >
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <section class="presentacion">
+
+            <div class="presentacion-contenido">
+
+                <p class="etiqueta-seccion">
+                    CONOCE S-I-R-H
+                </p>
+
+
+                <h2>
+                    Una nueva forma de gestionar
+                    el talento
+                </h2>
+
+
+                <p>
+
+                    SIRH es una plataforma orientada a apoyar
+                    el proceso de reclutamiento y selección,
+                    facilitando la gestión de empresas,
+                    vacantes y postulantes.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="servicios"
+            class="servicios"
+        >
+            
+            <div class="encabezado-servicios">
+
+                <p class="etiqueta-seccion">
+                    SOLUCIONES S-I-R-H
+                </p>
+
+
+                <h2>
+                    Nuestras soluciones
+                </h2>
+
+
+                <p>
+
+                    Herramientas digitales para apoyar
+                    diferentes etapas del proceso de selección.
+
+                </p>
+
+            </div>
+
+            
+            <div class="tarjetas">
+
+                
+                <article
+                    id="vacantes"
+                    class="tarjeta"
+                >
+                   
+
+                    <div class="tarjeta-imagen imagen-vacantes">
+
+                        <div class="imagen-contenido">
+
+                            <span class="icono">
+                                💼
+                            </span>
+
+                            <span class="texto-imagen">
+                                VACANTES
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                  
+
+                    <div class="tarjeta-contenido">
+
+                        <p class="numero">
+                            01
+                        </p>
+
+
+                        <h3>
+                            Gestión de vacantes
+                        </h3>
+
+
+                        <p>
+
+                            Permite registrar y administrar
+                            las ofertas laborales de las empresas
+                            de manera organizada.
+
+                        </p>
+
+
+                        <a
+                            href="#"
+                            class="btn-tarjeta"
+                        >
+                            Ver servicio →
+                        </a>
+
+                    </div>
+
+                </article>
+
+                
+                <article class="tarjeta">
+
+
+                    <!-- IMAGEN -->
+
+                    <div class="tarjeta-imagen imagen-ia">
+
+                        <div class="imagen-contenido">
+
+                            <span class="icono">
+                                🤖
+                            </span>
+
+                            <span class="texto-imagen">
+                                INTELIGENCIA ARTIFICIAL
+                            </span>
+
+                        </div>
+
+                    </div>
+
+              
+                    <div class="tarjeta-contenido">
+
+                        <p class="numero">
+                            02
+                        </p>
+
+
+                        <h3>
+                            Evaluación inteligente
+                        </h3>
+
+
+                        <p>
+
+                            Apoya el análisis de las hojas de vida
+                            frente a los requisitos establecidos
+                            para cada vacante.
+
+                        </p>
+
+
+                        <a
+                            href="#"
+                            class="btn-tarjeta"
+                        >
+                            Ver servicio →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+               
+                <article
+                    id="postulantes"
+                    class="tarjeta"
+                >
+
+
+                    <!-- IMAGEN -->
+
+                    <div class="tarjeta-imagen imagen-indicadores">
+
+                        <div class="imagen-contenido">
+
+                            <span class="icono">
+                                📊
+                            </span>
+
+                            <span class="texto-imagen">
+                                INDICADORES
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    
+
+                    <div class="tarjeta-contenido">
+
+                        <p class="numero">
+                            03
+                        </p>
+
+
+                        <h3>
+                            Indicadores y clasificación
+                        </h3>
+
+
+                        <p>
+
+                            Facilita el análisis de los postulantes
+                            mediante información organizada e
+                            indicadores del proceso.
+
+                        </p>
+
+
+                        <a
+                            href="#"
+                            class="btn-tarjeta"
+                        >
+                            Ver servicio →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        
+
+        <section
+            id="empresas"
+            class="diferencial"
+        >
+
+            <div class="diferencial-contenedor">
+
+
+                <div class="diferencial-texto">
+
+                    <p class="etiqueta-seccion">
+                        EL DIFERENCIAL DE S-I-R-H
+                    </p>
+
+
+                    <h2>
+
+                        Tecnología para apoyar
+                        la selección de talento
+
+                    </h2>
+
+
+                    <p>
+
+                        SIRH integra la gestión de empresas,
+                        vacantes y postulantes con herramientas
+                        digitales y apoyo de Inteligencia Artificial
+                        para facilitar el proceso de selección.
+
+                    </p>
+
+
+                    <a
+                        href="#servicios"
+                        class="btn-principal"
+                    >
+                        Explorar soluciones
+                    </a>
+
+                </div>
+
+
+
+                <div class="diferencial-datos">
+
+
+                    <div class="dato">
+
+                        <span class="dato-numero">
+                            IA
+                        </span>
+
+                        <span class="dato-texto">
+                            Inteligencia Artificial
+                        </span>
+
+                    </div>
+
+
+                    <div class="dato">
+
+                        <span class="dato-numero">
+                            01
+                        </span>
+
+                        <span class="dato-texto">
+                            Plataforma integrada
+                        </span>
+
+                    </div>
+
+
+                    <div class="dato">
+
+                        <span class="dato-numero">
+                            360°
+                        </span>
+
+                        <span class="dato-texto">
+                            Gestión del proceso
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+        <section class="llamada">
+
+            <div class="llamada-contenido">
+
+                <p class="etiqueta-seccion">
+                    SIRH
+                </p>
+
+
+                <h2>
+                    El talento está esperando
+                    una oportunidad
+                </h2>
+
+
+                <p>
+
+                    Conecta empresas y postulantes
+                    mediante una gestión inteligente
+                    del proceso de selección.
+
+                </p>
+
+
+                <div class="hero-botones">
+
+                    <a
+                        href="#registro"
+                        class="btn-principal"
+                        data-auth-modal="register"
+                    >
+                        Registrarse
+                    </a>
+
+
+                    <a
+                        href="#login"
+                        class="btn-outline"
+                        data-auth-modal="login"
+                    >
+                        Iniciar sesión
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <footer class="footer">
+
+        <div class="footer-contenedor">
+
+
+            <div class="footer-marca">
+
+                <h2>
+                    SIRTH
+                </h2>
+
+
+                <p>
+                    Reclutamiento inteligente
+                    para conectar talento
+                    con oportunidades.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-enlaces">
+
+                <h3>
+                    Plataforma
+                </h3>
+
+
+                <a href="#inicio">
+                    Inicio
+                </a>
+
+
+                <a href="#empresas">
+                    Empresas
+                </a>
+
+
+                <a href="#vacantes">
+                    Vacantes
+                </a>
+
+
+                <a href="#postulantes">
+                    Postulantes
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-enlaces">
+
+                <h3>
+                    Acceso
+                </h3>
+
+
+                <a href="#login" data-auth-modal="login">
+                    Iniciar sesión
+                </a>
+
+
+                <a href="#registro" data-auth-modal="register">
+                    Registrarse
+                </a>
+
+
+                <a href="#servicios">
+                    Soluciones
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-linea"></div>
+
+
+
+        <p class="copyright">
+
+            © 2026 SIRH | Proyecto formativo
+
+        </p>
+
+    </footer>
+
+
+    <!-- ========================================================
+         MODAL DE AUTENTICACIÓN (LOGIN Y REGISTRO INTEGRADO)
+         ======================================================== -->
+    <div class="auth-modal-overlay" id="auth-modal-overlay" aria-hidden="true">
+        <div class="auth-modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-heading-title">
+            
+            <!-- Botón de Cierre (X) -->
+            <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+
+            <!-- Encabezado del Modal -->
+            <div class="modal-header">
+                <div class="modal-brand-badge">
+                    <span class="modal-brand-logo">S-I-R-H</span>
+                    <span class="modal-pill">Portal de Acceso</span>
+                </div>
+                <h2 id="modal-heading-title" class="modal-title">Acceso a SIRH</h2>
+                <p id="modal-heading-subtitle" class="modal-subtitle">Ingresa a tu cuenta para gestionar tus procesos de reclutamiento</p>
+            </div>
+
+            <!-- Selector de Rol (Candidato vs Empresa) -->
+            <div class="modal-role-selector">
+                <button type="button" class="modal-role-btn active" data-role="candidato" id="modal-role-candidato">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>Candidato / Postulante</span>
+                </button>
+                <button type="button" class="modal-role-btn" data-role="empresa" id="modal-role-empresa">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <span>Empresa / Reclutador</span>
+                </button>
+            </div>
+
+            <!-- Pestañas (Tabs) Iniciar Sesión / Registrarse -->
+            <nav class="modal-tabs" role="tablist">
+                <button type="button" class="modal-tab-btn active" id="modal-tab-login" role="tab" aria-selected="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10 17 15 12 10 7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </svg>
+                    <span>Iniciar Sesión</span>
+                </button>
+                <button type="button" class="modal-tab-btn" id="modal-tab-register" role="tab" aria-selected="false">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                    </svg>
+                    <span>Registrarse</span>
+                </button>
+            </nav>
+
+            <!-- Mensaje de Notificación Interactiva -->
+            <div id="modal-alert" class="modal-alert hidden" role="alert">
+                <span id="modal-alert-message">Mensaje informativo</span>
+            </div>
+
+            <!-- TAB 1: FORMULARIO DE INICIAR SESIÓN -->
+            <div id="modal-view-login" class="modal-tab-content active" role="tabpanel">
+                <div class="modal-social-group">
+                    <button type="button" class="modal-social-btn" id="modal-google-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                        </svg>
+                        <span>Google</span>
+                    </button>
+                    <button type="button" class="modal-social-btn" id="modal-linkedin-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                        <span>LinkedIn</span>
+                    </button>
+                </div>
+
+                <div class="modal-divider">
+                    <span>o ingresa con tus credenciales</span>
+                </div>
+
+                <!-- Cuentas Demo Rápidas para pruebas -->
+                <div class="modal-demo-box">
+                    <div class="modal-demo-header">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                        <span>Probar con cuentas demo (1 clic):</span>
+                    </div>
+                    <div class="modal-demo-buttons">
+                        <button type="button" class="btn-demo-fill" data-demo-role="candidato" id="btn-demo-candidato">
+                            <span>👤 Candidato Demo</span>
+                        </button>
+                        <button type="button" class="btn-demo-fill" data-demo-role="empresa" id="btn-demo-empresa">
+                            <span>🏢 Empresa Demo</span>
+                        </button>
+                    </div>
+                </div>
+
+                <form id="modal-form-login" novalidate>
+                    <div class="modal-input-group">
+                        <label for="modal-login-user" class="modal-label">
+                            <span id="modal-label-login-user">Correo o Identificación</span>
+                            <span class="modal-required">*</span>
+                        </label>
+                        <div class="modal-input-wrapper">
+                            <div class="modal-input-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="modal-login-user" 
+                                class="modal-input" 
+                                placeholder="ejemplo@correo.com o documento" 
+                                required
+                            >
+                        </div>
+                        <span class="modal-field-error" id="modal-error-login-user"></span>
+                    </div>
+
+                    <div class="modal-input-group">
+                        <div class="modal-label-row">
+                            <label for="modal-login-password" class="modal-label">
+                                <span>Contraseña</span>
+                                <span class="modal-required">*</span>
+                            </label>
+                            <a href="#" class="modal-forgot-link" id="modal-link-forgot">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <div class="modal-input-wrapper">
+                            <div class="modal-input-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <input 
+                                type="password" 
+                                id="modal-login-password" 
+                                class="modal-input" 
+                                placeholder="••••••••••••" 
+                                required
+                            >
+                            <button type="button" class="modal-btn-toggle-pass" data-target="modal-login-password" aria-label="Mostrar contraseña">
+                                <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <svg class="icon-eye-off hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        <span class="modal-field-error" id="modal-error-login-password"></span>
+                    </div>
+
+                    <div class="modal-checkbox-group">
+                        <label class="modal-custom-checkbox">
+                            <input type="checkbox" id="modal-login-remember">
+                            <span class="modal-checkbox-box"></span>
+                            <span>Recordar mi sesión</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="modal-btn-submit" id="modal-btn-submit-login">
+                        <span>Iniciar Sesión</span>
+                    </button>
+                </form>
+
+                <div class="modal-footer-switch">
+                    <span>¿Aún no tienes cuenta?</span>
+                    <button type="button" class="modal-btn-switch" id="modal-switch-to-register">Regístrate gratis</button>
+                </div>
+            </div>
+
+            <!-- TAB 2: FORMULARIO DE REGISTRO -->
+            <div id="modal-view-register" class="modal-tab-content" role="tabpanel">
+                <form id="modal-form-register" novalidate>
+                    <div class="modal-input-group">
+                        <label for="modal-reg-name" class="modal-label">
+                            <span id="modal-label-reg-name">Nombre completo</span>
+                            <span class="modal-required">*</span>
+                        </label>
+                        <div class="modal-input-wrapper">
+                            <div class="modal-input-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="modal-reg-name" 
+                                class="modal-input" 
+                                placeholder="Ej: Juan Pérez Morales" 
+                                required
+                            >
+                        </div>
+                        <span class="modal-field-error" id="modal-error-reg-name"></span>
+                    </div>
+
+                    <div class="modal-row-2">
+                        <div class="modal-input-group">
+                            <label for="modal-reg-doc-type" class="modal-label">
+                                <span>Tipo</span>
+                                <span class="modal-required">*</span>
+                            </label>
+                            <div class="modal-input-wrapper">
+                                <select id="modal-reg-doc-type" class="modal-input modal-select" required>
+                                    <option value="CC" selected>C.C.</option>
+                                    <option value="TI">T.I.</option>
+                                    <option value="CE">C.E.</option>
+                                    <option value="NIT">NIT</option>
+                                    <option value="PAS">Pasaporte</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-input-group">
+                            <label for="modal-reg-doc-num" class="modal-label">
+                                <span>N° Documento</span>
+                                <span class="modal-required">*</span>
+                            </label>
+                            <div class="modal-input-wrapper">
+                                <input 
+                                    type="text" 
+                                    id="modal-reg-doc-num" 
+                                    class="modal-input" 
+                                    placeholder="123456789" 
+                                    required
+                                >
+                            </div>
+                            <span class="modal-field-error" id="modal-error-reg-doc-num"></span>
+                        </div>
+                    </div>
+
+                    <div class="modal-input-group">
+                        <label for="modal-reg-email" class="modal-label">
+                            <span>Correo electrónico</span>
+                            <span class="modal-required">*</span>
+                        </label>
+                        <div class="modal-input-wrapper">
+                            <div class="modal-input-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <input 
+                                type="email" 
+                                id="modal-reg-email" 
+                                class="modal-input" 
+                                placeholder="correo@ejemplo.com" 
+                                required
+                            >
+                        </div>
+                        <span class="modal-field-error" id="modal-error-reg-email"></span>
+                    </div>
+
+                    <div class="modal-input-group">
+                        <label for="modal-reg-phone" class="modal-label">
+                            <span>Teléfono / Celular</span>
+                            <span class="modal-required">*</span>
+                        </label>
+                        <div class="modal-input-wrapper">
+                            <div class="modal-input-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                            </div>
+                            <input 
+                                type="tel" 
+                                id="modal-reg-phone" 
+                                class="modal-input" 
+                                placeholder="+57 300 123 4567" 
+                                required
+                            >
+                        </div>
+                        <span class="modal-field-error" id="modal-error-reg-phone"></span>
+                    </div>
+
+                    <div class="modal-row-2">
+                        <div class="modal-input-group">
+                            <label for="modal-reg-password" class="modal-label">
+                                <span>Contraseña</span>
+                                <span class="modal-required">*</span>
+                            </label>
+                            <div class="modal-input-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="modal-reg-password" 
+                                    class="modal-input" 
+                                    placeholder="Mín. 8 car." 
+                                    required
+                                >
+                                <button type="button" class="modal-btn-toggle-pass" data-target="modal-reg-password" aria-label="Mostrar contraseña">
+                                    <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    <svg class="icon-eye-off hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- Medidor en tiempo real de seguridad de contraseña -->
+                            <div class="password-strength-container" id="reg-password-strength-container">
+                                <div class="password-strength-bars">
+                                    <div class="strength-bar" id="str-bar-1"></div>
+                                    <div class="strength-bar" id="str-bar-2"></div>
+                                    <div class="strength-bar" id="str-bar-3"></div>
+                                    <div class="strength-bar" id="str-bar-4"></div>
+                                </div>
+                                <span class="strength-text" id="str-text">Mínimo 8 caracteres</span>
+                            </div>
+                            <span class="modal-field-error" id="modal-error-reg-password"></span>
+                        </div>
+
+                        <div class="modal-input-group">
+                            <label for="modal-reg-password-confirm" class="modal-label">
+                                <span>Confirmar</span>
+                                <span class="modal-required">*</span>
+                            </label>
+                            <div class="modal-input-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="modal-reg-password-confirm" 
+                                    class="modal-input" 
+                                    placeholder="Repetir" 
+                                    required
+                                >
+                                <button type="button" class="modal-btn-toggle-pass" data-target="modal-reg-password-confirm" aria-label="Mostrar contraseña">
+                                    <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    <svg class="icon-eye-off hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <span class="modal-field-error" id="modal-error-reg-password-confirm"></span>
+                        </div>
+                    </div>
+
+                    <div class="modal-checkbox-group">
+                        <label class="modal-custom-checkbox">
+                            <input type="checkbox" id="modal-reg-terms" required>
+                            <span class="modal-checkbox-box"></span>
+                            <span>Acepto los <a href="#" class="modal-terms-link">Términos</a> y la <a href="#" class="modal-terms-link">Política de Datos</a></span>
+                        </label>
+                        <span class="modal-field-error" id="modal-error-reg-terms"></span>
+                    </div>
+
+                    <button type="submit" class="modal-btn-submit" id="modal-btn-submit-register">
+                        <span>Crear Cuenta</span>
+                    </button>
+                </form>
+
+                <div class="modal-footer-switch">
+                    <span>¿Ya tienes una cuenta registrada?</span>
+                    <button type="button" class="modal-btn-switch" id="modal-switch-to-login">Iniciar sesión</button>
+                </div>
+            </div>
+
+            <!-- TAB 3: FORMULARIO DE RECUPERACIÓN DE CONTRASEÑA -->
+            <div id="modal-view-recovery" class="modal-tab-content" role="tabpanel">
+                <div class="modal-recovery-info">
+                    <p>Ingresa tu correo electrónico o número de documento registrado para buscar y restablecer tu clave.</p>
+                </div>
+                <form id="modal-form-recovery" novalidate>
+                    <div class="modal-input-group" id="recovery-step-1">
+                        <label for="modal-recovery-user" class="modal-label">
+                            <span>Correo o Identificación Registrada</span>
+                            <span class="modal-required">*</span>
+                        </label>
+                        <div class="modal-input-wrapper">
+                            <div class="modal-input-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="modal-recovery-user" 
+                                class="modal-input" 
+                                placeholder="ejemplo@correo.com o documento" 
+                                required
+                            >
+                        </div>
+                        <span class="modal-field-error" id="modal-error-recovery-user"></span>
+                    </div>
+
+                    <div class="recovery-step-new-pass hidden" id="recovery-step-2">
+                        <div class="modal-found-user-box">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span>Cuenta identificada: <strong id="modal-recovery-account-name">Carlos Mendoza</strong> <small id="modal-recovery-account-role">(Candidato)</small></span>
+                        </div>
+
+                        <div class="modal-input-group">
+                            <label for="modal-recovery-newpass" class="modal-label">
+                                <span>Nueva Contraseña</span>
+                                <span class="modal-required">*</span>
+                            </label>
+                            <div class="modal-input-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="modal-recovery-newpass" 
+                                    class="modal-input" 
+                                    placeholder="Mínimo 8 caracteres"
+                                >
+                                <button type="button" class="modal-btn-toggle-pass" data-target="modal-recovery-newpass" aria-label="Mostrar contraseña">
+                                    <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    <svg class="icon-eye-off hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <span class="modal-field-error" id="modal-error-recovery-newpass"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="modal-btn-submit" id="modal-btn-submit-recovery">
+                        <span>Buscar Cuenta</span>
+                    </button>
+                </form>
+
+                <div class="modal-footer-switch">
+                    <span>¿Recordaste tu contraseña?</span>
+                    <button type="button" class="modal-btn-switch" id="modal-switch-back-login">Volver al inicio de sesión</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========================================================
+         MODAL DE PERFIL Y RESUMEN DE SESIÓN (SIRH)
+         ======================================================== -->
+    <div class="auth-modal-overlay" id="profile-modal-overlay" aria-hidden="true">
+        <div class="auth-modal-card profile-modal-card" role="dialog" aria-modal="true" aria-labelledby="profile-heading-title">
+            <button type="button" class="modal-close-btn" id="profile-close-btn" aria-label="Cerrar modal">&times;</button>
+            
+            <div class="profile-header-card">
+                <div class="profile-avatar-large" id="profile-avatar-large">CM</div>
+                <div class="profile-header-info">
+                    <h2 id="profile-heading-title" class="profile-user-name">Carlos Mendoza</h2>
+                    <span class="profile-badge-role" id="profile-badge-role">Candidato / Postulante</span>
+                    <p class="profile-subtext" id="profile-email-text">candidato@sirh.com</p>
+                </div>
+            </div>
+
+            <div class="profile-details-grid">
+                <div class="profile-detail-item">
+                    <span class="detail-label">Identificación:</span>
+                    <strong class="detail-value" id="profile-detail-doc">CC 12345678</strong>
+                </div>
+                <div class="profile-detail-item">
+                    <span class="detail-label">Teléfono:</span>
+                    <strong class="detail-value" id="profile-detail-phone">+57 300 123 4567</strong>
+                </div>
+                <div class="profile-detail-item">
+                    <span class="detail-label">Estado de Cuenta:</span>
+                    <strong class="detail-value text-success">✓ Verificada y Activa</strong>
+                </div>
+                <div class="profile-detail-item">
+                    <span class="detail-label">Fecha de Registro:</span>
+                    <strong class="detail-value" id="profile-detail-date">15 Octubre, 2026</strong>
+                </div>
+            </div>
+
+            <div class="profile-role-section" id="profile-role-section">
+                <!-- Se llena con métricas según el rol -->
+            </div>
+
+            <div class="profile-actions-footer">
+                <button type="button" class="btn-profile-secondary" id="btn-profile-close">Volver a la plataforma</button>
+                <button type="button" class="btn-profile-danger" id="btn-profile-logout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor Flotante de Notificaciones Toast -->
+    <div id="sirh-toast-container" class="sirh-toast-container" aria-live="polite"></div>
+
+    <!-- Script de lógica interactiva -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
