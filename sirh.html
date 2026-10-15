@@ -73,7 +73,8 @@
 
      
 
-            <div class="acciones">
+            <!-- Acciones de Invitado (No autenticado) -->
+            <div class="acciones" id="nav-guest-actions">
 
                 <a href="#login" class="btn-login" data-auth-modal="login">
                     Iniciar sesión
@@ -83,6 +84,56 @@
                     Registrarse
                 </a>
 
+            </div>
+
+            <!-- Acciones de Usuario Autenticado (Se activa dinámicamente) -->
+            <div class="user-session-container hidden" id="nav-user-session">
+                <button type="button" class="user-profile-badge" id="btn-user-dropdown" aria-haspopup="true" aria-expanded="false" title="Menú de usuario">
+                    <div class="user-avatar-circle" id="nav-user-avatar">CM</div>
+                    <div class="user-name-col">
+                        <span class="user-display-name" id="nav-user-name">Carlos Mendoza</span>
+                        <span class="user-display-role" id="nav-user-role">Candidato</span>
+                    </div>
+                    <svg class="icon-dropdown-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Menú Desplegable -->
+                <div class="user-dropdown-menu hidden" id="user-dropdown-menu">
+                    <div class="dropdown-user-header">
+                        <div class="dropdown-avatar-sm" id="dropdown-avatar-sm">CM</div>
+                        <div class="dropdown-header-text">
+                            <strong id="dropdown-header-name">Carlos Mendoza</strong>
+                            <small id="dropdown-header-email">candidato@sirh.com</small>
+                            <span class="dropdown-tag-role" id="dropdown-header-role">Candidato / Postulante</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <ul class="dropdown-items-list">
+                        <li>
+                            <button type="button" class="dropdown-item-btn" id="btn-open-profile">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <span>Ver Mi Perfil Completo</span>
+                            </button>
+                        </li>
+                        <li id="dropdown-role-quickaction">
+                            <!-- Inyectado dinámicamente según rol -->
+                        </li>
+                    </ul>
+                    <div class="dropdown-divider"></div>
+                    <button type="button" class="dropdown-item-btn dropdown-btn-logout" id="btn-dropdown-logout">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </div>
             </div>
 
         </nav>
@@ -731,6 +782,24 @@
                     <span>o ingresa con tus credenciales</span>
                 </div>
 
+                <!-- Cuentas Demo Rápidas para pruebas -->
+                <div class="modal-demo-box">
+                    <div class="modal-demo-header">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                        <span>Probar con cuentas demo (1 clic):</span>
+                    </div>
+                    <div class="modal-demo-buttons">
+                        <button type="button" class="btn-demo-fill" data-demo-role="candidato" id="btn-demo-candidato">
+                            <span>👤 Candidato Demo</span>
+                        </button>
+                        <button type="button" class="btn-demo-fill" data-demo-role="empresa" id="btn-demo-empresa">
+                            <span>🏢 Empresa Demo</span>
+                        </button>
+                    </div>
+                </div>
+
                 <form id="modal-form-login" novalidate>
                     <div class="modal-input-group">
                         <label for="modal-login-user" class="modal-label">
@@ -940,6 +1009,16 @@
                                     </svg>
                                 </button>
                             </div>
+                            <!-- Medidor en tiempo real de seguridad de contraseña -->
+                            <div class="password-strength-container" id="reg-password-strength-container">
+                                <div class="password-strength-bars">
+                                    <div class="strength-bar" id="str-bar-1"></div>
+                                    <div class="strength-bar" id="str-bar-2"></div>
+                                    <div class="strength-bar" id="str-bar-3"></div>
+                                    <div class="strength-bar" id="str-bar-4"></div>
+                                </div>
+                                <span class="strength-text" id="str-text">Mínimo 8 caracteres</span>
+                            </div>
                             <span class="modal-field-error" id="modal-error-reg-password"></span>
                         </div>
 
@@ -991,8 +1070,140 @@
                 </div>
             </div>
 
+            <!-- TAB 3: FORMULARIO DE RECUPERACIÓN DE CONTRASEÑA -->
+            <div id="modal-view-recovery" class="modal-tab-content" role="tabpanel">
+                <div class="modal-recovery-info">
+                    <p>Ingresa tu correo electrónico o número de documento registrado para buscar y restablecer tu clave.</p>
+                </div>
+                <form id="modal-form-recovery" novalidate>
+                    <div class="modal-input-group" id="recovery-step-1">
+                        <label for="modal-recovery-user" class="modal-label">
+                            <span>Correo o Identificación Registrada</span>
+                            <span class="modal-required">*</span>
+                        </label>
+                        <div class="modal-input-wrapper">
+                            <div class="modal-input-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="modal-recovery-user" 
+                                class="modal-input" 
+                                placeholder="ejemplo@correo.com o documento" 
+                                required
+                            >
+                        </div>
+                        <span class="modal-field-error" id="modal-error-recovery-user"></span>
+                    </div>
+
+                    <div class="recovery-step-new-pass hidden" id="recovery-step-2">
+                        <div class="modal-found-user-box">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span>Cuenta identificada: <strong id="modal-recovery-account-name">Carlos Mendoza</strong> <small id="modal-recovery-account-role">(Candidato)</small></span>
+                        </div>
+
+                        <div class="modal-input-group">
+                            <label for="modal-recovery-newpass" class="modal-label">
+                                <span>Nueva Contraseña</span>
+                                <span class="modal-required">*</span>
+                            </label>
+                            <div class="modal-input-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="modal-recovery-newpass" 
+                                    class="modal-input" 
+                                    placeholder="Mínimo 8 caracteres"
+                                >
+                                <button type="button" class="modal-btn-toggle-pass" data-target="modal-recovery-newpass" aria-label="Mostrar contraseña">
+                                    <svg class="icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    <svg class="icon-eye-off hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                        <line x1="1" y1="1" x2="23" y2="23"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <span class="modal-field-error" id="modal-error-recovery-newpass"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="modal-btn-submit" id="modal-btn-submit-recovery">
+                        <span>Buscar Cuenta</span>
+                    </button>
+                </form>
+
+                <div class="modal-footer-switch">
+                    <span>¿Recordaste tu contraseña?</span>
+                    <button type="button" class="modal-btn-switch" id="modal-switch-back-login">Volver al inicio de sesión</button>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <!-- ========================================================
+         MODAL DE PERFIL Y RESUMEN DE SESIÓN (SIRH)
+         ======================================================== -->
+    <div class="auth-modal-overlay" id="profile-modal-overlay" aria-hidden="true">
+        <div class="auth-modal-card profile-modal-card" role="dialog" aria-modal="true" aria-labelledby="profile-heading-title">
+            <button type="button" class="modal-close-btn" id="profile-close-btn" aria-label="Cerrar modal">&times;</button>
+            
+            <div class="profile-header-card">
+                <div class="profile-avatar-large" id="profile-avatar-large">CM</div>
+                <div class="profile-header-info">
+                    <h2 id="profile-heading-title" class="profile-user-name">Carlos Mendoza</h2>
+                    <span class="profile-badge-role" id="profile-badge-role">Candidato / Postulante</span>
+                    <p class="profile-subtext" id="profile-email-text">candidato@sirh.com</p>
+                </div>
+            </div>
+
+            <div class="profile-details-grid">
+                <div class="profile-detail-item">
+                    <span class="detail-label">Identificación:</span>
+                    <strong class="detail-value" id="profile-detail-doc">CC 12345678</strong>
+                </div>
+                <div class="profile-detail-item">
+                    <span class="detail-label">Teléfono:</span>
+                    <strong class="detail-value" id="profile-detail-phone">+57 300 123 4567</strong>
+                </div>
+                <div class="profile-detail-item">
+                    <span class="detail-label">Estado de Cuenta:</span>
+                    <strong class="detail-value text-success">✓ Verificada y Activa</strong>
+                </div>
+                <div class="profile-detail-item">
+                    <span class="detail-label">Fecha de Registro:</span>
+                    <strong class="detail-value" id="profile-detail-date">15 Octubre, 2026</strong>
+                </div>
+            </div>
+
+            <div class="profile-role-section" id="profile-role-section">
+                <!-- Se llena con métricas según el rol -->
+            </div>
+
+            <div class="profile-actions-footer">
+                <button type="button" class="btn-profile-secondary" id="btn-profile-close">Volver a la plataforma</button>
+                <button type="button" class="btn-profile-danger" id="btn-profile-logout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor Flotante de Notificaciones Toast -->
+    <div id="sirh-toast-container" class="sirh-toast-container" aria-live="polite"></div>
 
     <!-- Script de lógica interactiva -->
     <script src="js/main.js"></script>
